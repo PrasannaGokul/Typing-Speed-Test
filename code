@@ -1,0 +1,118 @@
+import time
+import random
+
+f1=open("C:\\Users\\Admin\\Documents\\top 200 words.txt","r")
+f2=open("C:\\Users\\Admin\\Documents\\rick astley.txt","r")
+l2=f2.readlines()
+str1=f1.read()
+l1=str1.split()
+f1.close()
+f2.close()
+def accuracy():
+    global text
+    global ts
+    l = len(ts)
+    
+    a=text.split()
+    b=ts.split()
+    a3=len(a)
+    a1=0
+    for i in range(len(b)):
+        if len(b) > len(a):
+            diff=len(b)-len(a)
+            for j in range(diff):
+                a += "*"
+        else:
+            diff=len(a)-len(b)
+            for j in range(diff):
+                b += "*"       
+    for k in range(len(a)):
+        a1+=len(a[k])
+    for i in range(len(b)):
+        if len(b[i]) > len(a[i]):
+            diff=len(b[i])-len(a[i])
+            for j in range(diff):
+                a[i] += " "
+
+        else:
+            diff=len(a[i])-len(b[i])
+            for j in range(diff):
+                b[i] += " "
+
+    c=0
+    for f in range(a3):
+        for j in range(len(a[f])):
+            if b[f][j] == a[f][j]:
+                c=c+1
+            else:
+                pass
+    acc=(c/a1)*100
+    return acc
+def speed():
+    global time1
+    global time2
+    global ts
+    f = 0
+    for i in ts:
+        f += 1
+    t = (time2 - time1)/60
+    f /= 5
+    speed = f/t
+    return speed
+
+print("𝓦𝓮𝓵𝓬𝓸𝓶𝓮, 𝔀𝓸𝓾𝓵𝓭 𝔂𝓸𝓾 𝓵𝓲𝓴𝓮 𝓽𝓸 𝓽𝓪𝓴𝓮 𝓪 𝓽𝔂𝓹𝓲𝓷𝓰 𝓽𝓮𝓼𝓽 ")
+ch = input("𝒾𝒻 𝓎𝑒𝓈 𝓉𝒽𝑒𝓃 𝓉𝓎𝓅𝑒 (y), 𝒾𝒻 𝓃𝑜 𝓉𝒽𝑒𝓃 𝓉𝓎𝓅𝑒 (n):   ")
+while ch=="n":
+    
+    print("𝒯𝒽𝒶𝓃𝓀 𝓎𝑜𝓊 𝒽𝒶𝓋𝑒 𝒶 𝓃𝑜𝓇𝓂𝒶𝓁 𝒹𝒶𝓎!")
+    break
+
+while ch == "y":
+    flag = True
+    if flag:
+        n1=(input("𝓎𝑜𝓊 𝓌𝒶𝓃𝓉 𝓉𝑜 𝓉𝓎𝓅𝑒 𝓌𝑜𝓇𝒹𝓈 𝑜𝓇 𝓈𝑒𝓃𝓉𝑒𝓃𝒸𝑒𝓈(w/s)?"))       
+        
+    ts = ""
+    if n1 == "w":
+        n = int(input("𝓃𝑜 𝑜𝒻 𝓌𝑜𝓇𝒹𝓈 𝓉𝒽𝒶𝓉 𝓎𝑜𝓊 𝓌𝒶𝓃𝓃𝒶 𝓉𝓎𝓅𝑒?             "))   
+        if n < 21:
+            flag = False  
+        for i in range(n):
+            ts += random.choice(l1)
+            ts += " "
+    elif n1 == "s":
+        ts = random.choice(l2)
+    else:
+        print("𝓃𝑒𝓍𝓉 𝓉𝒾𝓂𝑒 𝑒𝓃𝓉𝑒𝓇 (𝓌) 𝑜𝓇 (𝓈)")
+        print("𝒯𝒽𝒶𝓃𝓀 𝓎𝑜𝓊 𝒽𝒶𝓋𝑒 𝒶 𝓃𝒾𝒸𝑒 𝒹𝒶𝓎!")
+        break
+
+
+
+    print("𝒯𝓎𝓅𝑒 𝓉𝒽𝒾𝓈 𝓉𝑒𝓍𝓉 𝒶𝓈 𝒻𝒶𝓈𝓉 𝒶𝓈 𝓅𝑜𝓈𝓈𝒾𝒷𝓁𝑒:")
+    print("𝓅𝓇𝑒𝓈𝓈 𝓉𝒽𝑒 𝑒𝓃𝓉𝑒𝓇 𝓀𝑒𝓎 𝑜𝓃𝒸𝑒 𝓎𝑜𝓊𝓇 𝒹𝑜𝓃𝑒")
+    for i in range (5,0,-1):
+        print("00:0"+str(i) + "\r",end="")
+        time.sleep(1)
+        
+    print("𝓢𝓽𝓪𝓻𝓽!!!!")
+    print("==========================================================================================")
+    print(ts)
+    time1 = time.time()
+    text = input()
+    a=text.split()
+    b=ts.split()
+    a2=len(a)
+    b2=len(b)        
+    time2 = time.time()
+    speed2 = speed()
+    accuracy2 = accuracy()
+    print("==========================================================================================")
+    print("𝑅𝒶𝓌 𝓈𝓅𝑒𝑒𝒹:      ", speed2, "wpm")
+    actual = speed2*accuracy2/100
+    print("𝒜𝒸𝓉𝓊𝒶𝓁 𝓈𝓅𝑒𝑒𝒹:",actual,"wpm" )
+    print("𝒶𝒸𝒸𝓊𝓇𝒶𝒸𝓎:       ",accuracy2, "%")
+    print("==========================================================================================")
+    print("𝓐𝓷𝓸𝓽𝓱𝓮𝓻 𝓽𝓮𝓼𝓽? ")
+    ch = input("𝔂𝓮𝓼 𝓸𝓻 𝓷𝓸 (y/n):")
+    print("𝒯𝒽𝒶𝓃𝓀 𝓎𝑜𝓊 𝒽𝒶𝓋𝑒 𝒶 𝓃𝒾𝒸𝑒 𝒹𝒶𝓎!")         
